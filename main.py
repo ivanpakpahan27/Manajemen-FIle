@@ -51,7 +51,8 @@ dok4 = ['docx', 'vsdx', 'html', 'xlsx', 'pptx', 'DOCX']
 dok3 = ['pdf', 'xls', 'txt', 'odt', 'doc',
         'xml', 'csv', 'DOC', 'PDF', 'ppt', 'PPT']
 vid4 = ['mpeg', 'aiff']
-vid3 = ['mp4', '3gp', 'mkv', 'avi', 'mov', 'wmv', 'dat']
+vid3 = ['mp4', '3gp', 'mkv', 'avi', 'mov', 'wmv', 'dat', 'srt']
+vid2 = ['ts']
 ima4 = ['jpeg', 'webp', 'jfif', 'tiff']
 ima3 = ['gif', 'jpg', 'jpe', 'bmp', 'dip', 'png', 'ico', 'tif', 'wmf', 'fig']
 aud4 = ['flac']
@@ -62,24 +63,45 @@ app3 = ['exe']
 for filename in onlyfiles:
     if ((filename[-4:] in dok4) or (filename[-3:] in dok3)):
         print(filename)
-        shutil.move(mypath+filename, dokumen)
-    elif ((filename[-4:] in vid4) or (filename[-3:] in vid3)):
+        try:
+            shutil.move(mypath+filename, dokumen)
+        except:
+            print("Can't move item")
+    elif ((filename[-4:] in vid4) or (filename[-3:] in vid3) or (filename[-2:] in vid2)):
         print(filename)
-        shutil.move(mypath+filename, video)
+        try:
+            shutil.move(mypath+filename, video)
+        except:
+            print("Can't move item")
     elif ((filename[-4:] in aud4) or (filename[-3:] in aud3)):
         print(filename)
-        shutil.move(mypath+filename, audio)
+        try:
+            shutil.move(mypath+filename, audio)
+        except:
+            print("Can't move item")
     elif ((filename[-4:] in ima4) or (filename[-3:] in ima3)):
         print(filename)
-        shutil.move(mypath+filename, image)
+        try:
+            shutil.move(mypath+filename, image)
+        except:
+            print("Can't move item")
     elif ((filename[-3:] in arc3)):
         print(filename)
-        shutil.move(mypath+filename, archive)
+        try:
+            shutil.move(mypath+filename, archive)
+        except:
+            print("Can't move item")
     elif ((filename[-3:] in app3)):
         print(filename)
-        shutil.move(mypath+filename, app)
+        try:
+            shutil.move(mypath+filename, app)
+        except:
+            print("Can't move item")
     elif ((filename[-7:] == ('main.py'))):
         print(filename)
     else:
         print(filename)
-        shutil.move(mypath+filename, other)
+        try:
+            shutil.move(mypath+filename, other)
+        except:
+            print("Can't move item")
